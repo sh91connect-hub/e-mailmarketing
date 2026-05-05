@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="sk">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Návrh e-mail marketing systému pre TOROPLAST CZ
+  </title>
+  <meta content="HTML ponuka pre TOROPLAST CZ – návrh veľkého vstupného flowu, automatizácií a technických základov pre rast databázy a opakovaných nákupov." name="description"/>
+  <style>
+   :root { --c-red: #E63946; --c-orange-deep: #F26419; --c-orange: #F39200; --c-orange-light: #F9A03F; --c-yellow: #FFC93C; --c-ink: #1A1A1F; --c-ink-2: #24242b; --c-graphite: #5A5A66; --c-paper: #FBFAF7; --c-paper-warm: #FDF6EC; --c-cream: #FFF8EC; --c-white: #FFFFFF; --grad-brand: linear-gradient(135deg, var(--c-red) 0%, var(--c-orange-deep) 34%, var(--c-orange) 68%, var(--c-yellow) 100%); --shadow-soft: 0 20px 50px rgba(26, 26, 31, 0.08); --shadow-card: 0 14px 35px rgba(26, 26, 31, 0.07); --radius-xl: 32px; --radius-lg: 24px; --radius-md: 18px; --max: 1160px; } * { box-sizing: border-box; } html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; } body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: var(--c-paper); color: var(--c-ink); line-height: 1.58; } a { color: inherit; text-decoration: none; } .page { width: 100%; overflow: hidden; background: radial-gradient(circle at 12% 7%, rgba(249, 160, 63, 0.14), transparent 28%), radial-gradient(circle at 90% 10%, rgba(230, 57, 70, 0.10), transparent 30%), var(--c-paper); } .topbar { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(18px); background: rgba(251, 250, 247, 0.82); border-bottom: 1px solid rgba(26, 26, 31, 0.08); } .nav { max-width: var(--max); margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: var(--c-graphite); font-size: 14px; letter-spacing: 0.02em; } .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 850; color: var(--c-ink); } .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; color: #fff; border-radius: 11px; background: var(--grad-brand); box-shadow: 0 10px 24px rgba(242, 100, 25, 0.28); font-weight: 900; } .nav-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; } .pill-soft { border: 1px solid rgba(26, 26, 31, 0.09); border-radius: 999px; padding: 7px 12px; background: rgba(255, 255, 255, 0.52); } section { position: relative; padding: 96px 24px; } .section-warm { background: var(--c-paper-warm); } .section-paper { background: var(--c-paper); } .section-dark { background: var(--c-ink); color: #fff; } .container { max-width: var(--max); margin: 0 auto; position: relative; z-index: 2; } .hero { min-height: 760px; display: grid; align-items: center; background: radial-gradient(circle at 82% 18%, rgba(230, 57, 70, 0.22), transparent 24%), radial-gradient(circle at 12% 28%, rgba(243, 146, 0, 0.24), transparent 26%), radial-gradient(circle at 74% 74%, rgba(255, 201, 60, 0.14), transparent 30%), var(--c-paper); } .hero::before, .hero::after { content: ""; position: absolute; border-radius: 999px; filter: blur(4px); pointer-events: none; } .hero::before { width: 360px; height: 360px; right: -120px; top: 120px; background: radial-gradient(circle, rgba(242, 100, 25, 0.28), transparent 64%); } .hero::after { width: 280px; height: 280px; left: -90px; bottom: 70px; background: radial-gradient(circle, rgba(230, 57, 70, 0.20), transparent 66%); } .eyebrow { display: inline-flex; align-items: center; gap: 8px; width: fit-content; border-radius: 999px; padding: 9px 14px; margin-bottom: 26px; background: rgba(255, 255, 255, 0.76); border: 1px solid rgba(26, 26, 31, 0.08); box-shadow: 0 10px 30px rgba(26, 26, 31, 0.05); color: var(--c-graphite); font-size: 14px; font-weight: 720; } h1, h2, h3, p { margin-top: 0; } h1 { max-width: 980px; margin-bottom: 28px; font-size: clamp(52px, 7.4vw, 96px); line-height: 1.01; letter-spacing: -0.042em; font-weight: 920; } h2 { max-width: 920px; margin-bottom: 22px; font-size: clamp(36px, 4.8vw, 62px); line-height: 1.06; letter-spacing: -0.028em; font-weight: 880; } h3 { margin-bottom: 12px; font-size: 23px; line-height: 1.2; letter-spacing: -0.015em; font-weight: 820; } .gradient-text { background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; color: transparent; } .lead { max-width: 800px; color: var(--c-graphite); font-size: clamp(18px, 2.1vw, 22px); line-height: 1.68; margin-bottom: 0; } .lead strong { color: var(--c-ink); } .section-label { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; font-size: 13px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; color: transparent; } .section-label::before { content: ""; width: 36px; height: 2px; border-radius: 999px; background: var(--grad-brand); } .section-dark .section-label { color: #fff; background: none; opacity: 0.9; } .hero-meta { margin-top: 42px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); overflow: hidden; border-radius: var(--radius-lg); background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(26, 26, 31, 0.08); box-shadow: var(--shadow-soft); } .hero-meta div { padding: 18px 20px; border-right: 1px solid rgba(26, 26, 31, 0.08); } .hero-meta div:last-child { border-right: none; } .meta-k { display: block; margin-bottom: 3px; color: var(--c-graphite); font-size: 12px; font-weight: 780; letter-spacing: 0.11em; text-transform: uppercase; } .meta-v { color: var(--c-ink); font-size: 15px; font-weight: 800; } .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 44px; } .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 44px; } .card { background: rgba(255, 255, 255, 0.86); border: 1px solid rgba(26, 26, 31, 0.08); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-card); } .stat-card { min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; } .stat-number { display: block; margin-bottom: 16px; font-size: clamp(46px, 6vw, 66px); line-height: 1; letter-spacing: -0.04em; font-weight: 900; background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; color: transparent; } .stat-title { color: var(--c-ink); font-size: 22px; line-height: 1.28; font-weight: 850; letter-spacing: -0.015em; } .stat-note { margin: 18px 0 0; color: var(--c-graphite); font-size: 15px; } .dark-box { margin-top: 26px; padding: 34px; border-radius: var(--radius-xl); color: #fff; background: radial-gradient(circle at 10% 12%, rgba(243, 146, 0, 0.20), transparent 26%), radial-gradient(circle at 90% 88%, rgba(230, 57, 70, 0.16), transparent 28%), var(--c-ink); box-shadow: 0 22px 54px rgba(26, 26, 31, 0.24); } .dark-box .kicker { margin-bottom: 14px; color: var(--c-yellow); font-size: 13px; font-weight: 900; letter-spacing: 0.13em; text-transform: uppercase; } .dark-box p { max-width: 950px; color: rgba(255, 255, 255, 0.84); font-size: 18px; margin-bottom: 0; } .highlight-box { margin-top: 44px; padding: clamp(36px, 5vw, 58px); border-radius: var(--radius-xl); background: radial-gradient(circle at 85% 20%, rgba(255, 201, 60, 0.16), transparent 26%), radial-gradient(circle at 10% 90%, rgba(230, 57, 70, 0.16), transparent 28%), var(--c-ink); color: #fff; box-shadow: 0 30px 70px rgba(26, 26, 31, 0.23); } .highlight-small { margin: 0 0 14px; color: rgba(255, 255, 255, 0.68); font-size: 15px; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; } .highlight-title { max-width: 840px; margin: 0 0 22px; font-size: clamp(38px, 6vw, 74px); line-height: 1.03; letter-spacing: -0.03em; font-weight: 900; } .highlight-box p { max-width: 860px; margin-bottom: 0; color: rgba(255, 255, 255, 0.82); font-size: 20px; } .focus-flow { position: relative; margin-top: 44px; padding: clamp(34px, 5vw, 48px); border-radius: var(--radius-xl); background: #fff; border: 1px solid rgba(26, 26, 31, 0.08); box-shadow: 0 24px 64px rgba(26, 26, 31, 0.12); overflow: hidden; } .focus-flow::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 10px; background: var(--grad-brand); } .focus-kicker { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px; color: var(--c-orange-deep); font-size: 13px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; } .focus-flow p { max-width: 940px; color: var(--c-graphite); font-size: 18px; margin-bottom: 0; } .focus-points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 28px; } .focus-pill { padding: 18px 20px; border-radius: 20px; background: var(--c-cream); border: 1px solid rgba(242, 100, 25, 0.16); font-size: 15px; color: var(--c-ink); line-height: 1.45; } .focus-pill strong { display: block; margin-bottom: 4px; } .automation-card { position: relative; overflow: hidden; min-height: 330px; padding-left: 34px; } .automation-card::before { content: ""; position: absolute; left: 0; top: 0; width: 8px; height: 100%; background: var(--grad-brand); } .auto-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 26px; color: var(--c-graphite); font-size: 13px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; } .auto-icon { width: 45px; height: 45px; display: grid; place-items: center; border-radius: 16px; background: var(--c-cream); font-size: 24px; } .automation-card p { color: var(--c-graphite); margin-bottom: 16px; } .mini-box { margin-top: 24px; padding: 28px; border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(242, 100, 25, 0.22); box-shadow: var(--shadow-card); display: grid; grid-template-columns: 260px 1fr; gap: 20px; align-items: start; } .mini-box strong { color: var(--c-orange-deep); font-size: 19px; } .mini-box p { margin-bottom: 0; color: var(--c-graphite); } .case-head { margin-top: 48px; display: flex; justify-content: space-between; gap: 20px; align-items: flex-end; padding-bottom: 18px; border-bottom: 1px solid rgba(26, 26, 31, 0.10); } .case-title { margin: 0; font-size: clamp(25px, 3vw, 35px); letter-spacing: -0.02em; line-height: 1.18; } .case-sub { margin: 4px 0 0; color: var(--c-graphite); } .case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 24px; } .metric-card { background: #fff; border: 1px solid rgba(26, 26, 31, 0.08); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-card); } .metric-card h3 { margin-bottom: 20px; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.3; } .metric-list { display: grid; gap: 10px; margin: 0 0 20px; padding: 0; list-style: none; color: var(--c-graphite); font-size: 15px; } .metric-list li { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(26, 26, 31, 0.07); } .metric-list strong { color: var(--c-ink); } .sale-number { padding-top: 18px; border-top: 1px solid rgba(26, 26, 31, 0.08); font-size: 28px; line-height: 1.04; letter-spacing: -0.02em; font-weight: 920; background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; color: transparent; } .small-note { margin-top: 18px; color: var(--c-graphite); font-size: 13px; line-height: 1.5; } .table-wrap { margin-top: 24px; overflow: hidden; border: 1px solid rgba(26, 26, 31, 0.08); border-radius: var(--radius-lg); background: #fff; box-shadow: var(--shadow-card); } table { width: 100%; border-collapse: collapse; min-width: 690px; font-size: 15px; } th, td { padding: 16px 18px; text-align: left; border-bottom: 1px solid rgba(26, 26, 31, 0.07); } th { background: var(--c-ink); color: #fff; font-size: 12px; letter-spacing: 0.11em; text-transform: uppercase; } tr:last-child td { border-bottom: none; } td:not(:first-child) { font-weight: 780; color: var(--c-ink); } .comment-box { margin-top: 24px; padding: 26px; border-radius: var(--radius-lg); background: var(--c-cream); border: 1px solid rgba(242, 100, 25, 0.18); color: var(--c-graphite); } .template-card { min-height: 360px; display: flex; flex-direction: column; gap: 18px; } .placeholder { flex: 1; min-height: 210px; border-radius: 22px; border: 1px dashed rgba(26, 26, 31, 0.22); background: linear-gradient(135deg, rgba(249, 160, 63, 0.10), rgba(230, 57, 70, 0.06)), #fff; display: grid; place-items: center; text-align: center; color: rgba(26, 26, 31, 0.42); font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; padding: 20px; } .template-card h3 { margin-bottom: 2px; } .template-card p { margin-bottom: 0; color: var(--c-graphite); } .template-card.real-template { min-height: 0; padding: 18px; gap: 16px; } .template-shot { position: relative; overflow: hidden; height: 560px; border-radius: 22px; background: #fff; border: 1px solid rgba(26, 26, 31, 0.10); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55); } .template-shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .28s ease; } .template-shot:hover img { transform: scale(1.018); } .template-caption { padding: 0 4px 4px; } .template-caption .template-meta { margin: 0 0 7px; color: var(--c-orange-deep); font-size: 12px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; } .template-caption h3 { margin: 0 0 5px; } .template-caption p { margin: 0; color: var(--c-graphite); font-size: 15px; } .template-open { display: inline-flex; width: auto; margin-top: 12px; padding: 10px 14px; min-height: auto; border-radius: 999px; background: var(--c-ink); color: #fff; font-size: 13px; font-weight: 900; } .info-box { margin-top: 28px; padding: 28px 30px; border-radius: var(--radius-lg); background: var(--c-cream); border: 1px solid rgba(242, 100, 25, 0.28); color: var(--c-graphite); font-size: 18px; box-shadow: var(--shadow-card); } .info-box strong { color: var(--c-ink); } .pricing-intro h2, .pricing-intro .lead { color: #fff; } .pricing-intro .lead { color: rgba(255, 255, 255, 0.74); } .pricing-grid { display: grid; grid-template-columns: 1fr 1.06fr 1fr; gap: 22px; margin-top: 48px; align-items: stretch; } .price-card { position: relative; border-radius: var(--radius-xl); padding: 30px; background: rgba(255, 255, 255, 0.045); border: 1px solid rgba(255, 255, 255, 0.10); color: #fff; box-shadow: 0 26px 66px rgba(0, 0, 0, 0.16); } .price-card.featured { transform: scale(1.045); background: linear-gradient(var(--c-ink), var(--c-ink)) padding-box, var(--grad-brand) border-box; border: 2px solid transparent; box-shadow: 0 24px 80px rgba(242, 100, 25, 0.22); z-index: 2; } .recommend { display: inline-flex; margin-bottom: 18px; padding: 8px 12px; border-radius: 999px; background: var(--grad-brand); color: #fff; font-size: 12px; font-weight: 950; letter-spacing: 0.08em; text-transform: uppercase; } .price-card h3 { margin: 0 0 18px; color: #fff; font-size: 26px; text-transform: uppercase; letter-spacing: 0.01em; line-height: 1.25; } .price { margin: 0 0 6px; font-size: clamp(48px, 5vw, 72px); line-height: 1; letter-spacing: -0.03em; font-weight: 940; } .czk { margin-bottom: 28px; color: rgba(255, 255, 255, 0.58); font-size: 17px; font-weight: 760; } .divider { height: 1px; width: 100%; margin: 24px 0; background: rgba(255, 255, 255, 0.14); } .feature-list { display: grid; gap: 13px; padding: 0; margin: 0; list-style: none; color: rgba(255, 255, 255, 0.78); font-size: 15px; } .feature-list li { display: grid; grid-template-columns: 20px 1fr; gap: 9px; align-items: start; } .feature-list li::before { content: "✓"; color: var(--c-yellow); font-weight: 900; } .duration { margin-top: 28px; padding: 16px; border-radius: 18px; background: rgba(255, 255, 255, 0.06); color: #fff; font-weight: 850; } .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; margin-top: 22px; padding: 13px 18px; width: 100%; border-radius: 999px; background: #fff; color: var(--c-ink); font-weight: 900; transition: transform .18s ease, box-shadow .18s ease; } .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(255, 255, 255, 0.14); } .btn-primary { background: var(--grad-brand); color: #fff; box-shadow: 0 16px 34px rgba(242, 100, 25, 0.30); } .pricing-foot { margin-top: 48px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; color: rgba(255, 255, 255, 0.70); } .pricing-note, .payment-note { padding: 22px; border-radius: var(--radius-lg); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); } .payment-note strong { color: #fff; } .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 46px; } .step { position: relative; padding: 28px; min-height: 250px; border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(26, 26, 31, 0.08); box-shadow: var(--shadow-card); } .step-number { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; margin-bottom: 24px; border-radius: 16px; background: var(--grad-brand); color: #fff; font-weight: 950; } .step h3 { margin-bottom: 8px; } .step p { color: var(--c-graphite); margin-bottom: 0; } .contact-card { display: grid; grid-template-columns: 1.05fr 0.95fr; overflow: hidden; border-radius: var(--radius-xl); background: #fff; border: 1px solid rgba(26, 26, 31, 0.08); box-shadow: 0 28px 76px rgba(26, 26, 31, 0.11); } .contact-left, .contact-right { padding: clamp(32px, 5vw, 56px); } .contact-left { background: radial-gradient(circle at 12% 14%, rgba(249, 160, 63, 0.16), transparent 34%), var(--c-paper-warm); } .contact-right { border-left: 1px solid rgba(26, 26, 31, 0.08); } .contact-card h2 { margin-bottom: 18px; font-size: clamp(36px, 5vw, 60px); line-height: 1.08; letter-spacing: -0.028em; } .contact-card p { color: var(--c-graphite); font-size: 18px; } .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; } .contact-actions .btn { width: auto; margin-top: 0; min-width: 220px; } .avatar { width: 92px; height: 92px; margin-bottom: 22px; border-radius: 28px; background: var(--grad-brand); display: grid; place-items: center; color: #fff; font-size: 32px; font-weight: 950; box-shadow: 0 18px 42px rgba(242, 100, 25, 0.26); } .bio-list { display: grid; gap: 12px; margin-top: 26px; padding: 0; list-style: none; color: var(--c-graphite); } .bio-list strong { color: var(--c-ink); } footer { padding: 34px 24px; background: var(--c-ink); color: rgba(255, 255, 255, 0.62); font-size: 14px; } .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; } @media (max-width: 980px) { section { padding: 76px 20px; } .hero { min-height: auto; padding-top: 92px; } .hero-meta, .grid-3, .grid-2, .case-grid, .pricing-grid, .steps, .pricing-foot, .contact-card, .mini-box, .focus-points { grid-template-columns: 1fr; } .hero-meta div { border-right: none; border-bottom: 1px solid rgba(26, 26, 31, 0.08); } .hero-meta div:last-child { border-bottom: none; } .price-card.featured { transform: none; } .contact-right { border-left: none; border-top: 1px solid rgba(26, 26, 31, 0.08); } .case-head { align-items: flex-start; flex-direction: column; } } @media (max-width: 640px) { .nav { align-items: flex-start; flex-direction: column; } .nav-meta { justify-content: flex-start; } h1 { font-size: clamp(42px, 14vw, 62px); } h2 { font-size: clamp(34px, 11vw, 48px); } .card, .dark-box, .highlight-box, .price-card, .step, .focus-flow { padding: 24px; } .hero-meta { margin-top: 32px; } .contact-actions .btn { width: 100%; } .table-wrap { overflow-x: auto; } .template-shot { height: 470px; } } @media print { .topbar { position: static; } body { background: #fff; } section { page-break-inside: avoid; padding: 48px 24px; } .btn { border: 1px solid #ddd; } }
+  </style>
+ </head>
+ <body>
+  <div class="page">
+   <header class="topbar">
+    <nav aria-label="Hlavná navigácia" class="nav">
+     <a aria-label="Almao" class="brand" href="#top">
+      <span class="brand-mark">
+       A
+      </span>
+      <span>
+       almao.cz
+      </span>
+     </a>
+     <div class="nav-meta">
+      <span class="pill-soft">
+       Pre TOROPLAST CZ
+      </span>
+      <span class="pill-soft">
+       Návrh e-mail marketing systému
+      </span>
+     </div>
+    </nav>
+   </header>
+   <main id="top">
+    <section aria-label="Úvod ponuky" class="hero section-paper">
+     <div class="container">
+      <div class="eyebrow">
+       👋 Pán Chudoba, vďaka za náš telefonát
+      </div>
+      <h1>
+       <span class="gradient-text">
+        Najväčší potenciál je v uvítacej sérii e-mailov.
+       </span>
+       <br/>
+       Návrh pre TOROPLAST.
+      </h1>
+      <p class="lead">
+       Pozrel som sa na vašu databázu, e-shop a aktuálnu komunikáciu. Stav je tento:
+       <strong>
+        privádzate návštevnosť z reklám
+       </strong>
+       , ale väčšinu návštevníkov po príchode
+       <strong>
+        nezachytíte
+       </strong>
+       . Nevezmete si ich e-mail, nezistíte, či ich zaujíma záhrada, vykurovanie, materiály alebo chov — a ten kontakt je pre vás preč.
+      </p>
+      <p class="lead" style="margin-top: 18px;">
+       Popri tom máte
+       <strong>
+        635 kontaktov
+       </strong>
+       , z toho
+       <strong>
+        507 ľudí
+       </strong>
+       u vás nakúpilo iba raz a iba
+       <strong>
+        13 ľudí
+       </strong>
+       sa vrátilo druhýkrát. Preto dnes nevidím najväčšiu príležitosť v newsletteri, ale v
+       <strong>
+        hlavnej uvítacej sérii
+       </strong>
+       , ktorá začne zachytávať dopyt, zbierať preferencie a vracať ľudí späť do nákupu.
+      </p>
+      <div aria-label="Meta informácie ponuky" class="hero-meta">
+       <div>
+        <span class="meta-k">
+         Pre
+        </span>
+        <span class="meta-v">
+         TOROPLAST CZ
+        </span>
+       </div>
+       <div>
+        <span class="meta-k">
+         Pripravil
+        </span>
+        <span class="meta-v">
+         Štefan Hrušovský
+        </span>
+       </div>
+       <div>
+        <span class="meta-k">
+         Verzia
+        </span>
+        <span class="meta-v">
+         1. 5. 2026
+        </span>
+       </div>
+       <div>
+        <span class="meta-k">
+         Aktuálny stav
+        </span>
+        <span class="meta-v">
+         reklamy bez zberu kontaktov a bez uvítacej série
+        </span>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section class="section-warm" id="zistenia">
+     <div class="container">
+      <span class="section-label">
+       Čo som zistil
+      </span>
+      <h2>
+       Kde dnes Toroplast stráca peniaze
+      </h2>
+      <p class="lead">
+       Nemá byť o „krajších newsletteroch“. Má byť o tom, aby platená návštevnosť neodchádzala naprázdno a aby ste vedeli s kontaktom ďalej obchodne pracovať.
+      </p>
+      <div class="grid-3">
+       <article class="card stat-card">
+        <div>
+         <span class="stat-number">
+          507
+         </span>
+         <div class="stat-title">
+          ľudí nakúpilo raz a nedostali systém, ktorý by ich vrátil späť.
+         </div>
+        </div>
+        <p class="stat-note">
+         To je 79,8 % vašej databázy.
+        </p>
+       </article>
+       <article class="card stat-card">
+        <div>
+         <span class="stat-number">
+          2,5 %
+         </span>
+         <div class="stat-title">
+          ľudí sa vráti na druhý nákup.
+         </div>
+        </div>
+        <p class="stat-note">
+         V zdravo nastavenom e-shope býva opakovaný nákup výrazne vyšší.
+        </p>
+       </article>
+       <article class="card stat-card">
+        <div>
+         <span class="stat-number">
+          0
+         </span>
+         <div class="stat-title">
+          funkčný systém na zachytenie záujmu z reklám.
+         </div>
+        </div>
+        <p class="stat-note">
+         Návštevník odíde bez e-mailu aj bez preferovanej kategórie.
+        </p>
+       </article>
+      </div>
+      <div class="dark-box">
+       <div class="kicker">
+        Prečo sa to deje
+       </div>
+       <p>
+        Reklama privedie človeka na web, ale po príchode sa nič neudeje. Neexistuje uvítanie, ktoré by zachytilo kontakt, zistil, o aký sortiment sa zaujíma, a rozdelil ho do zmysluplnej komunikácie. Pri sortimente ako záhrada, vykurovanie, materiály... je toto kritické. Bez preferencií posielate príliš všeobecný obsah — a veľká časť platenej návštevnosti sa stratí skôr, než sa vôbec začne vzťah so zákazníkom.
+       </p>
+      </div>
+     </div>
+    </section>
+    <section class="section-paper" id="peniaze">
+     <div class="container">
+      <span class="section-label">
+       Kde sú peniaze
+      </span>
+      <h2>
+       Najväčšia rezerva je v tom, aby sa platený traffic menil na vlastnú databázu
+      </h2>
+      <p class="lead">
+       Keď dnes zaplatíte za klik a nevezmete si kontakt, kupujete len jednu návštevu. Keď si však z návštevníka vezmete e-mail a jeho preferovanú kategóriu, z jedného kliku vzniká publikum, s ktorým môžete pracovať opakovane — automatizáciami aj newsletterom.
+      </p>
+      <div class="highlight-box">
+       <p class="highlight-small">
+        Cieľ na 6–9 mesiacov
+       </p>
+       <div class="highlight-title">
+        Postaviť
+        <span class="gradient-text">
+         veľký vstupný flow
+        </span>
+        a súčasne zdvihnúť repeat rate z 2,5 % na 5–7 %.
+       </div>
+       <p>
+        Inými slovami: nielen vracať existujúcich zákazníkov, ale ešte pred ich odchodom zachytiť nových návštevníkov, zistiť ich preferenciu a zaradiť ich do relevantnej komunikácie. To je vrstva, ktorá má pri zapnutých reklamách najväčší potenciál.
+       </p>
+      </div>
+     </div>
+    </section>
+    <section class="section-warm" id="riesenie">
+     <div class="container">
+      <span class="section-label">
+       Riešenie
+      </span>
+      <h2>
+       Najprv postavíme hlavný vstupný flow. Až potom doplníme zvyšok systému.
+      </h2>
+      <p class="lead">
+       Nechcem začínať newsletterom. Chcem začať flowom, ktorý zachytí traffic z reklám, rozdelí ho podľa záujmu a pripraví pôdu pre predaj aj ďalšie automatizácie.
+      </p>
+      <div class="focus-flow">
+       <div class="focus-kicker">
+        Hlavný fokus · automatizácia 01
+       </div>
+       <h3>
+        Veľký vstupný flow pre nových návštevníkov a nové kontakty
+       </h3>
+       <p>
+        Toto bude hlavný motor celého systému. Namiesto toho, aby návštevník prišiel z reklamy a odišiel bez stopy, flow zachytí jeho kontakt, zistí jeho záujem a spustí sériu e-mailov podľa preferovanej kategórie. Tým z plateného trafficu vzniká vlastná databáza, nie jednorazová návšteva.
+       </p>
+       <div class="focus-points">
+        <div class="focus-pill">
+         <strong>
+          Zber kontaktu
+         </strong>
+         formulár / pop-up / vstupný magnet podľa typu návštevníka a stránky
+        </div>
+        <div class="focus-pill">
+         <strong>
+          Zber preferencie
+         </strong>
+         záhrada / vykurovanie / materiály / chov — aby ďalšia komunikácia bola relevantná
+        </div>
+        <div class="focus-pill">
+         <strong>
+          Veľká séria e-mailov
+         </strong>
+         uvítanie, edukácia, orientácia v sortimente, dôvera, prvá konverzia
+        </div>
+       </div>
+      </div>
+      <div class="grid-2">
+       <article class="card automation-card">
+        <div class="auto-top">
+         <span>
+          Automatizácia 02
+         </span>
+         <span class="auto-icon">
+          🛒
+         </span>
+        </div>
+        <h3>
+         Opustený košík
+        </h3>
+        <p>
+         Najrýchlejšie návratná automatizácia v e-shope. Pri vašom rozpätí objednávok od približne 1 000 Kč po 100 000 Kč má vysoký obchodný dopad.
+        </p>
+        <p>
+         <strong>
+          Timing:
+         </strong>
+         1 h / 24 h / 72 h
+        </p>
+       </article>
+       <article class="card automation-card">
+        <div class="auto-top">
+         <span>
+          Automatizácia 03
+         </span>
+         <span class="auto-icon">
+          ⭐
+         </span>
+        </div>
+        <h3>
+         Po nákupe + recenzia
+        </h3>
+        <p>
+         Buduje vzťah po nákupe, znižuje pocit „objednal som a nič sa nedeje“ a pripravuje ďalší obchodný krok.
+        </p>
+        <p>
+         Pri zložitejších produktoch, ako sú kotle či skleníky, môže obsahovať aj praktický checklist alebo servisnú orientáciu.
+        </p>
+       </article>
+       <article class="card automation-card">
+        <div class="auto-top">
+         <span>
+          Automatizácia 04
+         </span>
+         <span class="auto-icon">
+          🔄
+         </span>
+        </div>
+        <h3>
+         Reaktivácia neaktívnych
+        </h3>
+        <p>
+         Vracia časť z 507 zákazníkov, ktorí u vás nakúpili raz a odvtedy sa nevrátili.
+        </p>
+        <p>
+         <strong>
+          Segmentácia podľa kategórie
+         </strong>
+         posledného nákupu, aby obsah nepôsobil plošne.
+        </p>
+       </article>
+       <article class="card automation-card">
+        <div class="auto-top">
+         <span>
+          Podporná vrstva
+         </span>
+         <span class="auto-icon">
+          🧩
+         </span>
+        </div>
+        <h3>
+         Segmentácia a dátová logika
+        </h3>
+        <p>
+         Každý ďalší e-mail bude stáť na tom, že budeme vedieť, aký typ zákazníka prišiel a o čo sa zaujímal.
+        </p>
+        <p>
+         Bez dát o preferenciách je newsletter len všeobecná streľba naslepo.
+        </p>
+       </article>
+      </div>
+      <div class="mini-box">
+       <strong>
+        + Technické základy
+       </strong>
+       <p>
+        Pred spustením flowov vyriešim nastavenie domény (SPF, DKIM, DMARC), nastavím zber kontaktov a dočistím 56 nezaradených kontaktov vo vašej databáze. Bez tejto vrstvy by aj najlepší flow podával slabšie, než môže.
+       </p>
+      </div>
+     </div>
+    </section>
+    <section class="section-paper" id="dokaz">
+     <div class="container">
+      <span class="section-label">
+       Dôkaz
+      </span>
+      <h2>
+       Reálne výsledky z mojich projektov
+      </h2>
+      <p class="lead">
+       Nie sľuby. Konkrétne čísla z e-shopov, s ktorými pracujem. Vaše čísla budú iné — závisia od sortimentu, marže, sezóny a kvality databázy. Ale ukazujú smer, kam sa dá dostať.
+      </p>
+      <div class="case-head">
+       <div>
+        <h3 class="case-title">
+         Strelecký ráj
+        </h3>
+        <p class="case-sub">
+         e-shop so strelivom a doplnkami
+        </p>
+       </div>
+      </div>
+      <div class="case-grid">
+       <article class="metric-card">
+        <h3>
+         Welcome séria
+        </h3>
+        <ul class="metric-list">
+         <li>
+          <span>
+           Doručené
+          </span>
+          <strong>
+           226
+          </strong>
+         </li>
+         <li>
+          <span>
+           Open
+          </span>
+          <strong>
+           59,73 %
+          </strong>
+         </li>
+         <li>
+          <span>
+           CTR
+          </span>
+          <strong>
+           31,11 %
+          </strong>
+         </li>
+        </ul>
+        <div class="sale-number">
+         17 118 €
+        </div>
+       </article>
+       <article class="metric-card">
+        <h3>
+         Opustený košík
+        </h3>
+        <ul class="metric-list">
+         <li>
+          <span>
+           Doručené
+          </span>
+          <strong>
+           192
+          </strong>
+         </li>
+         <li>
+          <span>
+           Open
+          </span>
+          <strong>
+           38,02 %
+          </strong>
+         </li>
+         <li>
+          <span>
+           CTR
+          </span>
+          <strong>
+           27,40 %
+          </strong>
+         </li>
+        </ul>
+        <div class="sale-number">
+         2 788 €
+        </div>
+       </article>
+       <article class="metric-card">
+        <h3>
+         Reaktivácia
+        </h3>
+        <ul class="metric-list">
+         <li>
+          <span>
+           Doručené
+          </span>
+          <strong>
+           866
+          </strong>
+         </li>
+         <li>
+          <span>
+           Open
+          </span>
+          <strong>
+           53,35 %
+          </strong>
+         </li>
+         <li>
+          <span>
+           CTR
+          </span>
+          <strong>
+           56,49 %
+          </strong>
+         </li>
+        </ul>
+        <div class="sale-number">
+         1 067 €
+        </div>
+       </article>
+      </div>
+      <p class="small-note">
+       Výsledky závisia od mnohých faktorov mimo e-mail marketingu — marže, ceny, sezóny, kvality databázy. Vaše čísla budú iné.
+      </p>
+      <div class="case-head">
+       <div>
+        <h3 class="case-title">
+         Víno Hruška
+        </h3>
+        <p class="case-sub">
+         e-shop s vínom
+        </p>
+       </div>
+      </div>
+      <div aria-label="Výsledky kampaní Víno Hruška" class="table-wrap" role="region" tabindex="0">
+       <table>
+        <thead>
+         <tr>
+          <th>
+           Kampaň
+          </th>
+          <th>
+           Doručené
+          </th>
+          <th>
+           Open
+          </th>
+          <th>
+           CTR
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td>
+           Body | SK
+          </td>
+          <td>
+           1 812
+          </td>
+          <td>
+           29,97 %
+          </td>
+          <td>
+           4,36 %
+          </td>
+         </tr>
+         <tr>
+          <td>
+           Zlúčenie kartičiek
+          </td>
+          <td>
+           320
+          </td>
+          <td>
+           26,56 %
+          </td>
+          <td>
+           0,00 %
+          </td>
+         </tr>
+         <tr>
+          <td>
+           Body | Apríl/Máj | FU
+          </td>
+          <td>
+           6 448
+          </td>
+          <td>
+           11,00 %
+          </td>
+          <td>
+           1,60 %
+          </td>
+         </tr>
+         <tr>
+          <td>
+           Body | Apríl/Máj
+          </td>
+          <td>
+           7 696
+          </td>
+          <td>
+           48,65 %
+          </td>
+          <td>
+           4,33 %
+          </td>
+         </tr>
+         <tr>
+          <td>
+           Mango Kir | SK
+          </td>
+          <td>
+           1 821
+          </td>
+          <td>
+           36,52 %
+          </td>
+          <td>
+           2,64 %
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="comment-box">
+       Víno Hruška dnes zatiaľ nemá nasadené automatizácie — pracujem hlavne s pravidelnými newsletterami. Doručiteľnosť stabilne nad 99 %, open rate na pravidelných kampaniach 30–48 %.
+      </div>
+     </div>
+    </section>
+    <section class="section-warm" id="sablony">
+     <div class="container">
+      <span class="section-label">
+       Šablóny
+      </span>
+      <h2>
+       Ako vyzerá moja práca v inboxe
+      </h2>
+      <p class="lead">
+       Nižšie sú vložené reálne ukážky mojich e-mailových šablón. Nie drag & drop výstupy, ale custom HTML spracovanie v identite značky.
+      </p>
+      <!--
+      GITHUB / NETLIFY NÁVOD:
+      1) V repozitári vytvor priečinok: assets
+      2) Doň nahraj tieto 3 obrázky s presnými názvami:
+         - vino-hruska-vernostny-program.png
+         - snackstore-produktovy-newsletter.png
+         - afra-produktovy-newsletter.png
+      3) HTML súbor nechaj v koreňovom priečinku repozitára ako index.html.
+      4) Ak HTML dáš do priečinka /docs, potom musí byť priečinok s obrázkami /docs/assets.
+    -->
+      <div class="grid-3">
+       <article class="card template-card real-template">
+        <a aria-label="Otvoriť ukážku Víno Hruška" class="template-shot" href="assets/vino-hruska-vernostny-program.png" rel="noopener" target="_blank">
+         <img alt="Ukážka e-mailovej šablóny Víno Hruška – vernostný program" loading="lazy" src="assets/vino-hruska-vernostny-program.png"/>
+        </a>
+        <div class="template-caption">
+         <p class="template-meta">
+          Vernostný program
+         </p>
+         <h3>
+          Víno Hruška
+         </h3>
+         <p>
+          Elegantná HTML šablóna pre vernostnú komunikáciu a prehľad odmien.
+         </p>
+         <a class="template-open" href="assets/vino-hruska-vernostny-program.png" rel="noopener" target="_blank">
+          Zobraziť celú ukážku →
+         </a>
+        </div>
+       </article>
+       <article class="card template-card real-template">
+        <a aria-label="Otvoriť ukážku Snackstore" class="template-shot" href="assets/snackstore-produktovy-newsletter.png" rel="noopener" target="_blank">
+         <img alt="Ukážka e-mailovej šablóny Snackstore – produktový newsletter" loading="lazy" src="assets/snackstore-produktovy-newsletter.png"/>
+        </a>
+        <div class="template-caption">
+         <p class="template-meta">
+          Produktový newsletter
+         </p>
+         <h3>
+          Snackstore
+         </h3>
+         <p>
+          Výrazná predajná šablóna s produktovými kartami, cenami a silným CTA.
+         </p>
+         <a class="template-open" href="assets/snackstore-produktovy-newsletter.png" rel="noopener" target="_blank">
+          Zobraziť celú ukážku →
+         </a>
+        </div>
+       </article>
+       <article class="card template-card real-template">
+        <a aria-label="Otvoriť ukážku AFRA" class="template-shot" href="assets/afra-produktovy-newsletter.png" rel="noopener" target="_blank">
+         <img alt="Ukážka e-mailovej šablóny AFRA – produktový newsletter" loading="lazy" src="assets/afra-produktovy-newsletter.png"/>
+        </a>
+        <div class="template-caption">
+         <p class="template-meta">
+          Produktový newsletter
+         </p>
+         <h3>
+          AFRA
+         </h3>
+         <p>
+          Prírodná, čistá a prehľadná šablóna s produktmi a odporúčaným balíčkom.
+         </p>
+         <a class="template-open" href="assets/afra-produktovy-newsletter.png" rel="noopener" target="_blank">
+          Zobraziť celú ukážku →
+         </a>
+        </div>
+       </article>
+      </div>
+     </div>
+    </section>
+    <section class="section-paper" id="newsletter">
+     <div class="container">
+      <span class="section-label">
+       Nadstavba
+      </span>
+      <h2>
+       Newsletter je rytmus. Flow a segmentácia sú základ.
+      </h2>
+      <p class="lead">
+       Po nasadení automatizácií prichádza prirodzená otázka — pravidelný newsletter. Pri Toroplaste dáva zmysel až v momente, keď budeme mať zachytené kontakty a aspoň základne rozdelené preferencie podľa kategórií.
+      </p>
+      <p class="lead" style="margin-top: 20px;">
+       Odporúčaná logika je 2× mesačne širší newsletter na celú databázu a 2× mesačne cielenejšia komunikácia na konkrétny segment. Ale cenovo to v tejto fáze neriešim. Najprv postavíme systém, ktorý z plateného trafficu vytvorí publikum a obchodný potenciál.
+      </p>
+      <div class="info-box">
+       💡
+       <strong>
+        Dôvod:
+       </strong>
+       Newsletter bez zachytenia kontaktov a bez segmentácie je len pekná komunikácia. Veľký vstupný flow je motor, ktorý vytvára databázu, dáta a obchodné príležitosti.
+      </div>
+     </div>
+    </section>
+    <section class="section-dark" id="investicia">
+     <div class="container pricing-intro">
+      <span class="section-label">
+       Investícia
+      </span>
+      <h2>
+       Tri spôsoby, ako začať
+      </h2>
+      <p class="lead">
+       Vyberte si rozsah, ktorý vám sedí. Každý balík je fixne nacenený — bez prekvapení.
+      </p>
+      <div class="pricing-grid">
+       <article class="price-card">
+        <h3>
+         Štart
+        </h3>
+        <div class="price">
+         500 €
+        </div>
+        <div class="czk">
+         ~ 12 500 Kč
+        </div>
+        <div class="divider">
+        </div>
+        <ul class="feature-list">
+         <li>
+          2 automatizácie
+         </li>
+         <li>
+          Veľký vstupný flow + zber preferencií
+         </li>
+         <li>
+          Opustený košík
+         </li>
+         <li>
+          Technické základy
+         </li>
+        </ul>
+        <div class="duration">
+         Trvanie: 3–4 týždne
+        </div>
+        <a class="btn" href="mailto:s.hrusovsky@almao.cz?subject=TOROPLAST%20-%20vyber%C3%A1me%20bal%C3%ADk%20%C5%A0tart">
+         Vybrať Štart
+        </a>
+       </article>
+       <article class="price-card featured">
+        <span class="recommend">
+         ⭐ Odporúčam
+        </span>
+        <h3>
+         Standard
+        </h3>
+        <div class="price">
+         900 €
+        </div>
+        <div class="czk">
+         ~ 22 500 Kč
+        </div>
+        <div class="divider">
+        </div>
+        <ul class="feature-list">
+         <li>
+          4 automatizácie
+         </li>
+         <li>
+          Veľký vstupný flow + zber preferencií
+         </li>
+         <li>
+          Opustený košík
+         </li>
+         <li>
+          Po nákupe + recenzia
+         </li>
+         <li>
+          Reaktivácia
+         </li>
+         <li>
+          Technické základy
+         </li>
+         <li>
+          Segmentácia do 4 skupín
+         </li>
+         <li>
+          1 kolo úprav podľa dát
+         </li>
+        </ul>
+        <div class="duration">
+         Trvanie: 5–6 týždňov
+        </div>
+        <a class="btn btn-primary" href="mailto:s.hrusovsky@almao.cz?subject=TOROPLAST%20-%20vyber%C3%A1me%20bal%C3%ADk%20Standard">
+         Vybrať Standard ⭐
+        </a>
+       </article>
+       <article class="price-card">
+        <h3>
+         Plný
+        </h3>
+        <div class="price">
+         1 800 €
+        </div>
+        <div class="czk">
+         ~ 45 000 Kč
+        </div>
+        <div class="divider">
+        </div>
+        <ul class="feature-list">
+         <li>
+          6 automatizácií
+         </li>
+         <li>
+          Veľký vstupný flow + zber preferencií
+         </li>
+         <li>
+          Opustený košík
+         </li>
+         <li>
+          Po nákupe + recenzia
+         </li>
+         <li>
+          Reaktivácia
+         </li>
+         <li>
+          Opustené prezeranie
+         </li>
+         <li>
+          Cross-sell po nákupe
+         </li>
+         <li>
+          Technické základy
+         </li>
+         <li>
+          Plná segmentácia
+         </li>
+         <li>
+          2 kolá úprav podľa dát
+         </li>
+         <li>
+          Stratégia newsletterov
+         </li>
+        </ul>
+        <div class="duration">
+         Trvanie: 8–10 týždňov
+        </div>
+        <a class="btn" href="mailto:s.hrusovsky@almao.cz?subject=TOROPLAST%20-%20vyber%C3%A1me%20bal%C3%ADk%20Pln%C3%BD">
+         Vybrať Plný
+        </a>
+       </article>
+      </div>
+      <div class="pricing-foot">
+       <div class="pricing-note">
+        * Vstupný projekt — fixná cena. Cenotvorba ďalšej spolupráce sa upraví po vyhodnotení podľa reálnej náročnosti a výsledkov.
+       </div>
+       <div class="payment-note">
+        <strong>
+         Platba:
+        </strong>
+        70 % pred štartom, 30 % po dokončení
+        <br/>
+        <strong>
+         DPH:
+        </strong>
+        nie som platcom DPH
+       </div>
+      </div>
+     </div>
+    </section>
+    <section class="section-paper" id="dalsi-krok">
+     <div class="container">
+      <span class="section-label">
+       Ďalší krok
+      </span>
+      <h2>
+       Ako to funguje od TERAZ po SPUSTENIE
+      </h2>
+      <div class="steps">
+       <article class="step">
+        <span class="step-number">
+         01
+        </span>
+        <h3>
+         Výber balíka
+        </h3>
+        <p>
+         Vyberiete balík a napíšete mi e-mail.
+        </p>
+       </article>
+       <article class="step">
+        <span class="step-number">
+         02
+        </span>
+        <h3>
+         Záloha 70 %
+        </h3>
+        <p>
+         Pošlem faktúru, po platbe ide projekt do realizácie.
+        </p>
+       </article>
+       <article class="step">
+        <span class="step-number">
+         03
+        </span>
+        <h3>
+         Kick-off hovor
+        </h3>
+        <p>
+         60 minút. Prejdeme vstupné stránky, zber kontaktov, segmenty aj prístupy.
+        </p>
+       </article>
+       <article class="step">
+        <span class="step-number">
+         04
+        </span>
+        <h3>
+         Práca začína
+        </h3>
+        <p>
+         Spúšťam projekt. Komunikácia priebežne, výstupy podľa fáz.
+        </p>
+       </article>
+      </div>
+     </div>
+    </section>
+    <section class="section-paper" id="kontakt">
+     <div class="container">
+      <div class="contact-card">
+       <div class="contact-left">
+        <h2>
+         Hotoví začať?
+        </h2>
+        <p>
+         Ozvite sa s výberom balíka — pošlem faktúru a kick-off termín dohodneme obratom.
+        </p>
+        <div class="contact-actions">
+         <a class="btn btn-primary" href="mailto:s.hrusovsky@almao.cz?subject=TOROPLAST%20CZ%20-%20v%C3%BDber%20bal%C3%ADka">
+          ✉ Napísať Štefanovi
+         </a>
+         <a class="btn" href="tel:+420705988788">
+          Zavolať: +420 705 988 788
+         </a>
+        </div>
+       </div>
+       <div class="contact-right">
+        <div class="avatar">
+         ŠH
+        </div>
+        <h3>
+         Štefan Hrušovský
+        </h3>
+        <p>
+         <strong>
+          Almao · freelancer
+         </strong>
+        </p>
+        <p>
+         Posledné roky robím e-mail marketing pre menšie e-shopy v SK/CZ.
+        </p>
+        <ul class="bio-list">
+         <li>
+          <strong>
+           Aktuálne pracujem s:
+          </strong>
+          <br/>
+          Víno Hruška · Strelecký ráj · AFRA
+         </li>
+         <li>
+          ✉
+          <a href="mailto:s.hrusovsky@almao.cz">
+           s.hrusovsky@almao.cz
+          </a>
+         </li>
+         <li>
+          ☎
+          <a href="tel:+420705988788">
+           +420 705 988 788
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </section>
+   </main>
+   <footer>
+    <div class="footer-inner">
+     <span>
+      © Almao · Štefan Hrušovský
+     </span>
+     <span>
+      Pre Toroplast CZ
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
